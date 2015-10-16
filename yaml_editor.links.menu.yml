@@ -1,0 +1,5 @@
+yaml_editor.config:
+  title: 'YAML editor'
+  parent: system.admin_config_development
+  description: 'Configure path to Ace editor.'
+  route_name: yaml_editor.config

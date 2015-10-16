@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function yaml_editor_page_attachments(array &$attachments) {
+  $route = \Drupal::routeMatch()->getRouteObject();
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute($route);
+
+  if ($is_admin) {
+    $source = \Drupal::config('yaml_editor.config')->get('editor_source');
+
+    $attachments['#attached']['drupalSettings']['yamlEditor']['source'] = $source;
+    $attachments['#attached']['library'][] = 'yaml_editor/yaml_editor';
+  }
+}
