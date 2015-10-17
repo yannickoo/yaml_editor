@@ -1,6 +1,10 @@
 # YAML Editor
 
-> Provides an Ace editor for editing YAML configurations
+> This module loads an [Ace](https://ace.c9.io) editor for all textarea with `data-yaml-editor` attribute
+
+## Demo
+
+![Demonstration of editor enabled textarea](https://www.drupal.org/files/yaml-editor-demo_0.gif)
 
 ## Usage
 
