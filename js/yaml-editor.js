@@ -1,8 +1,3 @@
-/**
- * @file
- * Defines Javascript behaviors for the KDX External Links module.
- */
-
 (function ($, Drupal, drupalSettings) {
 
   "use strict";
