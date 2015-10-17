@@ -26,3 +26,7 @@ Here are some module which are already implementing the `data-yaml-editor` attri
 * [Menu Link Attributes](https://www.drupal.org/project/menu_link_attributes)
 * [Block Attributes](https://github.com/axe312ger/block_attributes)
 * [Responsive SVG](https://www.drupal.org/project/responsive_svg)
+
+## Contributing :hammer:
+
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/yannickoo/yaml_editor/issues/new).
