@@ -4,4 +4,4 @@ yaml_editor.config:
     _form: '\Drupal\yaml_editor\Form\ConfigForm'
     _title: 'YAML editor'
   requirements:
-    _permission: 'access administration pages'
+    _permission: 'configure yaml_editor'
