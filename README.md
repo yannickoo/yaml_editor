@@ -8,6 +8,12 @@
 
 ## Usage :point_up:
 
+### Field widget
+
+You can use the YAML editor for _Text (plain, long)_ fields, simply go to _Manage form display_ and select _Textarea with YAML editor_.
+
+### Code
+
 When you need an editor for your YAML files add a `data-yaml-editor` to you textarea like:
 
 ```php
