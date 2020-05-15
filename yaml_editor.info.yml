@@ -2,5 +2,6 @@ name: YAML Editor
 type: module
 description: 'Adds an editor for YAML configuration textareas.'
 core: 8.x
+core_version_requirement: ^8 || ^9
 package: Development
 configure: yaml_editor.config
