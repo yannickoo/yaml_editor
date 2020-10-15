@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Set default editor_theme in config.
+ */
+function yaml_editor_update_8001() {
+  \Drupal::configFactory()
+    ->getEditable('yaml_editor.config')
+    ->set('editor_theme', 'ace/theme/chrome')
+    ->save(TRUE);
+}
