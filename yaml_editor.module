@@ -8,9 +8,12 @@ function yaml_editor_page_attachments(array &$attachments) {
   $is_admin = \Drupal::service('router.admin_context')->isAdminRoute($route);
 
   if ($is_admin) {
-    $source = \Drupal::config('yaml_editor.config')->get('editor_source');
+    $config = \Drupal::config('yaml_editor.config');
+    $source = $config->get('editor_source');
+    $theme = $config->get('editor_theme');
 
     $attachments['#attached']['drupalSettings']['yamlEditor']['source'] = $source;
+    $attachments['#attached']['drupalSettings']['yamlEditor']['theme'] = $theme;
     $attachments['#attached']['library'][] = 'yaml_editor/yaml_editor';
   }
 }

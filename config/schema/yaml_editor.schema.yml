@@ -1,0 +1,10 @@
+yaml_editor.config:
+  type: config_object
+  label: 'Yaml Editor Config'
+  mapping:
+    editor_source:
+      type: string
+      label: 'Editor source'
+    editor_theme:
+      type: string
+      label: 'Editor theme'

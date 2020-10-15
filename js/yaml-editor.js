@@ -16,7 +16,7 @@
           editor.getSession().setValue($textarea.val());
           editor.getSession().setMode('ace/mode/yaml');
           editor.getSession().setTabSize(2);
-          editor.setTheme('ace/theme/chrome');
+          editor.setTheme(drupalSettings.yamlEditor.theme);
           editor.setOptions({
             minLines: 3,
             maxLines: 20
