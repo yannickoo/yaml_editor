@@ -37,6 +37,11 @@ class YamlEditorWidget extends StringTextareaWidget {
         'data-yaml-editor' => 'true',
         'class' => ['js-text-full', 'text-full'],
       ],
+      '#attached' => [
+        'library' => [
+          'yaml_editor/yaml_editor',
+        ],
+      ],
     ];
 
     return $element;
