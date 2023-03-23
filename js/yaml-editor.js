@@ -5,15 +5,23 @@
   Drupal.behaviors.yamlEditor = {
     attach: function (context) {
       var initEditor = function () {
-        $('textarea[data-yaml-editor]', context).once('yaml-editor').each(function () {
-          var $textarea = $(this);
-          var $editDiv = $('<div>').insertBefore($textarea);
+        once('yaml-editor', 'textarea[data-yaml-editor]', context).forEach(function(textarea){
 
-          $textarea.addClass('visually-hidden');
+          // Create div that will be the ace editor
+          var editDiv = document.createElement('div');
+
+          // Exit if not parent node exists
+          if(textarea.parentNode == null) return;
+
+          // Hide <textarea>
+          textarea.classList.add('visually-hidden');
+
+          // Add edit div after text area
+          textarea.parentNode.insertBefore(editDiv, textarea);
 
           // Init ace editor.
-          var editor = ace.edit($editDiv[0]);
-          editor.getSession().setValue($textarea.val());
+          var editor = ace.edit(editDiv);
+          editor.getSession().setValue(textarea.value);
           editor.getSession().setMode('ace/mode/yaml');
           editor.getSession().setTabSize(2);
           editor.setTheme('ace/theme/chrome');
@@ -24,9 +32,10 @@
 
           // Update Drupal textarea value.
           editor.getSession().on('change', function () {
-            $textarea.val(editor.getSession().getValue());
+            textarea.value = editor.getSession().getValue();
           });
-        });
+
+        })
       };
 
       // Check if Ace editor is already available and load it from source cdn otherwise.
@@ -34,9 +43,23 @@
         initEditor();
       }
       else {
-        $.getScript(drupalSettings.yamlEditor.source, initEditor);
+        getScript(drupalSettings.yamlEditor.source, initEditor)
       }
     }
   };
+
+  /**
+   * Helper to load ace script on the page.
+   *
+   * @param {string} source
+   * @param {function} callback
+   */
+  function getScript(source, callback) {
+    var script = document.createElement('script');
+    script.src = source;
+    script.async = true;
+    script.onload = callback;
+    document.body.appendChild(script);
+  }
 
 })(jQuery, Drupal, drupalSettings);
