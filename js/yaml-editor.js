@@ -1,19 +1,24 @@
-(function ($, Drupal, drupalSettings) {
+(function (Drupal, drupalSettings) {
 
-  "use strict";
+  'use strict';
 
   Drupal.behaviors.yamlEditor = {
     attach: function (context) {
       var initEditor = function () {
-        $('textarea[data-yaml-editor]', context).once('yaml-editor').each(function () {
-          var $textarea = $(this);
-          var $editDiv = $('<div>').insertBefore($textarea);
+        once('yaml-editor', 'textarea[data-yaml-editor]', context).forEach(function ($textarea) {
+          var $editDiv = document.createElement('div');
 
-          $textarea.addClass('visually-hidden');
+          if (!$textarea.parentNode) {
+            return;
+          }
 
-          // Init ace editor.
-          var editor = ace.edit($editDiv[0]);
-          editor.getSession().setValue($textarea.val());
+          $textarea.classList.add('visually-hidden');
+
+          $textarea.parentNode.insertBefore($editDiv, $textarea);
+
+          // Init Ace editor.
+          var editor = ace.edit($editDiv);
+          editor.getSession().setValue($textarea.value);
           editor.getSession().setMode('ace/mode/yaml');
           editor.getSession().setTabSize(2);
           editor.setTheme('ace/theme/chrome');
@@ -24,7 +29,7 @@
 
           // Update Drupal textarea value.
           editor.getSession().on('change', function () {
-            $textarea.val(editor.getSession().getValue());
+            $textarea.value = editor.getSession().getValue();
           });
         });
       };
@@ -34,9 +39,23 @@
         initEditor();
       }
       else {
-        $.getScript(drupalSettings.yamlEditor.source, initEditor);
+        getScript(drupalSettings.yamlEditor.source, initEditor);
       }
     }
   };
 
-})(jQuery, Drupal, drupalSettings);
+  /**
+   * Helper to load Ace script on the page.
+   *
+   * @param {string} source
+   * @param {function} callback
+   */
+  function getScript(source, callback) {
+    var script = document.createElement('script');
+    script.src = source;
+    script.async = true;
+    script.onload = callback;
+    document.body.appendChild(script);
+  }
+
+})(Drupal, drupalSettings);

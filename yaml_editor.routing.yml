@@ -2,6 +2,6 @@ yaml_editor.config:
   path: '/admin/config/development/yaml_editor'
   defaults:
     _form: '\Drupal\yaml_editor\Form\ConfigForm'
-    _title: 'YAML editor'
+    _title: 'YAML Editor'
   requirements:
     _permission: 'configure yaml_editor'

@@ -2,7 +2,6 @@ yaml_editor:
   js:
     js/yaml-editor.js: {}
   dependencies:
-    - core/jquery
+    - core/once
     - core/drupal
     - core/drupalSettings
-    - core/jquery.once
