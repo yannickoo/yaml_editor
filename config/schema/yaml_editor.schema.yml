@@ -5,3 +5,6 @@ yaml_editor.config:
     editor_source:
       type: string
       label: 'Editor source'
+    editor_theme:
+      type: string
+      label: 'Editor theme'

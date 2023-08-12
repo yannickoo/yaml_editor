@@ -1,1 +1,2 @@
 editor_source: //cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.min.js
+editor_theme: ace/theme/chrome
